@@ -1,0 +1,50 @@
+// ARC - Tutorial Angular Concepts Learning-
+-------------------------------------------------------------
+
+=> node version
+=> npm --version
+=> Download the MaterialPro theme from - wrappixel.com
+=> If your current global cli is not matcher with you project , it may throw and error so that you should have same angular/cli version in pc too, so if you don't have same @angular/cli, you can just go on cmd first write npm uninstall -g @angular/cli after that write " npm install -g @angular/cli@versionName.
+
+=> After sorting all these you can run npm install
+=> ng serve ( Sanity Check) 
+
+// So now thing get tricky
+
+=> Contact management system.
+		
+			- Lazy Loading
+			- Generate Components
+			- Services
+			
+=> Generate a module "contacts"
+		use the command ng g modules contacts --routing.
+		
+=> Made an entry in routes app.routing.ts
+			Like this:  
+		{
+        path: 'contact',
+        loadChildren: () =>import('./contacts/contacts.module').then(m => m.ContactsModule)
+		}
+
+=> Generated our components.
+		 - list 
+		 - create
+		 - delete
+		 - edit
+		 - search
+		 
+=> We added routes in teh contact modules for child routes
+		like this-
+				{
+					path: '',
+					children: [
+					  { path: '', component: ListComponent},
+					  { path: 'create', component: CreateComponent},
+					  { path: 'edit', component: EditComponent},
+					  { path: 'delete', component:EditComponent},
+					  { path: 'search', component:SearchComponent}
+					]
+				}
+				
+=> we will make that routes availble in contact list component.
